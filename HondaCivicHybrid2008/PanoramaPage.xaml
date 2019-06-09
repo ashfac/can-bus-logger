@@ -1,0 +1,65 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="HondaCivicHybrid2008.PanoramaPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <phone:Panorama Title="Honda Civic Hybrid 2008" TitleTemplate="{StaticResource SmallPanoramaTitle}">
+            <!--Panorama item 3 -->
+            <phone:PanoramaItem Header="CAN Bus Sniffer" HeaderTemplate="{StaticResource SmallPanoramaHeader}">
+                <Grid>
+                    <toolkit:ListPicker x:Name="lstCanIds" FullModeItemTemplate="{StaticResource ListPickerItemTemplate}" ExpansionMode="FullScreenOnly" HorizontalAlignment="Center"  Width="370" Margin="10,10" Grid.ColumnSpan="2" FontSize="22" SelectionChanged="lstCanIds_SelectionChanged" SelectionMode="Multiple" >
+                    </toolkit:ListPicker>
+                    <TextBox x:Name="txtCanId" Width="200" Height="70" Margin="10,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" InputScope="Text" FontSize="28" FontFamily="Tahoma" FontWeight="Bold" HorizontalAlignment="Left" TextAlignment="Center"/>
+                    <TextBox x:Name="txtNumCanMsgs" Width="200" Height="70" Margin="210,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" InputScope="Text" FontSize="28" FontFamily="Tahoma" FontWeight="Bold" HorizontalAlignment="Left" TextAlignment="Right"/>
+                    <TextBox x:Name="txtRawOutput" Height="80" Margin="10,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" InputScope="Text" FontFamily="Segoe WP Semibold" FontSize="32" HorizontalAlignment="Left" TextAlignment="Center"/>
+                    <TextBox x:Name="txtDisplay"  Height="280" HorizontalAlignment="Left" Margin="10,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Text="Select CAN IDs above" FontFamily="Segoe WP Semibold" FontSize="32"/>
+                    <Button Name="btnCanBusStart" Width="140" Height="80" Content="Start" Margin="10,510,257,10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Click="btnCanBusStart_Click"/>
+                    <Button Name="btnCanBusSettings" Width="140" Height="80" Content="Settings" Margin="145,510,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" RenderTransformOrigin="0.407,2.515" Click="btnCanBusSettings_Click" />
+                    <Button Name="btnCanBusSendLog" Width="140" Height="80" Content="Email" Margin="280,510,10,10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Click="btnCanBusSendLog_Click" RenderTransformOrigin="0.407,2.515" />
+                </Grid>
+            </phone:PanoramaItem>
+
+            <!--Panorama item 1 -->
+            <phone:PanoramaItem Header="Diagnostics" HeaderTemplate="{StaticResource SmallPanoramaHeader}">
+                <Grid>
+                    <toolkit:ListPicker x:Name="lstBtDeviceIds" FullModeItemTemplate="{StaticResource ListPickerItemTemplate}" ExpansionMode="FullScreenOnly" HorizontalAlignment="Center"  Width="370" Margin="10,10" Grid.ColumnSpan="2" FontSize="22" SelectionMode="Single" >
+                    </toolkit:ListPicker>
+                    <TextBlock Name="txtTemp" HorizontalAlignment="Left" Margin="129,125,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="36" TextAlignment="Center"/>
+                    <TextBlock Name="txtHumidity" HorizontalAlignment="Left" Margin="129,233,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="36" TextAlignment="Center"/>
+                    <Button Name="btnStartDiagnostics" Width="140" Height="80" Content="Start" Margin="145,510,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" RenderTransformOrigin="0.407,2.515" Click="btnStartDiagnostics_Click" />
+                </Grid>
+            </phone:PanoramaItem>
+
+            <!--Panorama item 2 -->
+            <phone:PanoramaItem Header="Fuel Consumption" HeaderTemplate="{StaticResource SmallPanoramaHeader}">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" Text="km" VerticalAlignment="Top" FontSize="36" TextAlignment="Center"/>
+                    <TextBox x:Name="txtKm" HorizontalAlignment="Left" Height="72" Margin="165,-5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" InputScope="Number"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,85,0,0" TextWrapping="Wrap" Text="L/100km" VerticalAlignment="Top" FontSize="36" TextAlignment="Center"/>
+                    <TextBox x:Name="txtLp100km" HorizontalAlignment="Left" Height="72" Margin="165,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" InputScope="Number"/>
+                    <TextBlock Name="lblKmPl" HorizontalAlignment="Left" Margin="10,280,0,0" TextWrapping="Wrap" Text="km/L" VerticalAlignment="Top" FontSize="24" TextAlignment="Center"/>
+                    <TextBlock Name="lblConsumption" HorizontalAlignment="Left" Margin="10,340,0,0" TextWrapping="Wrap" Text="Consumption" VerticalAlignment="Top" FontSize="24" TextAlignment="Center"/>
+                    <TextBlock Name="lblRemaining" HorizontalAlignment="Left" Margin="10,400,0,0" TextWrapping="Wrap" Text="Remaining" VerticalAlignment="Top" FontSize="24" TextAlignment="Center"/>
+                    <TextBlock Name="lblMaxKm" HorizontalAlignment="Left" Margin="10,460,0,0" TextWrapping="Wrap" Text="Max Distance" VerticalAlignment="Top" FontSize="24" TextAlignment="Center"/>
+                    <Button Name="btnCalculate" Width="200" Height="86" Content="Calculate" Margin="117,165,103,343" Background="Green" Click="btnCalculate_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </phone:PanoramaItem>
+
+
+        </phone:Panorama>
+    </Grid>
+
+</phone:PhoneApplicationPage>
